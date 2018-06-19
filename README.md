@@ -7,7 +7,7 @@ Feel free to fork this repository and work through the exercises. You can also a
 Once forked to yourself, you can sync with the original repository (in case of updates) by running:
 ```
 git pull https://github.com/csc-training/summerschool.git
-```
+This is Carltons new addtion.```
 
 Versions from previous years can be found in tags.
 
