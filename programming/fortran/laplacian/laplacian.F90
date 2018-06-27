@@ -46,13 +46,13 @@ program laplacian
   ! TODO: Printing of the arrays
   write(*,*) "Original array:" 
    do i = 1, nx
-     write(*,*)  A(i,2:ny-1)
+     write(*,*)  A(i,1:ny)
   end do
 
 
   write(*,*) "Laplacian of the array:" 
  do i = 1, ny
-     write(*,*) L(i,2:ny-1)
+     write(*,*) L(i,1:ny)
   end do
 
   ! Analytically, the Laplacian of the function is nabla^2 A(x,y) = 4
