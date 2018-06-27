@@ -2,13 +2,13 @@ program arrays
   implicit none
   ! TODO: Define the array A
   real, dimension(:,:), allocatable :: A 
-  real :: x, y, dx, dy
+  real :: x, y, valx, valy
   integer :: nx, ny, i, j, alloc_stat
 
   write (*,*) 'Give number of rows and columns for matrix A:'
   read (*,*) nx, ny
-  dx = 1.0/real(nx-1)
-  dy = 1.0/real(ny-1)
+  valx = 1.0/nx
+  valy = 1.0/ny
 
   ! TODO: allocate the array A
   allocate(A(nx,ny))
@@ -17,14 +17,16 @@ program arrays
   ! TODO: initalize the array A
 y = 0.0
 
-do j = 1,ny
-  x = 0.0
-   do i=1,nx
-   A(i,j) = x**2 + y**2
-   x = x + dx
-   end do
-   y = y + dy
-end do     
+outer_loop: do j = 1,ny
+              x = 0.0
+!              y = 0.0
+               do i=1,nx
+                A(i,j) = x**2 + y**2 
+                x = x + valx
+!                y = y + valy 
+               end do
+   y = y + valy
+end do  outer_loop   
  
 
   ! TODO: Print out the array
