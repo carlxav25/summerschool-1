@@ -1,42 +1,38 @@
 program loops
   implicit none
+
+
   ! TODO define parameters nx and ny
-  integer :: nx, ny
+   integer,parameter :: nx=10, ny=10
+
   ! TODO: define real-valued array A
+  real, dimension(nx,ny) :: A
   integer :: i, j
-  real, dimension(:,:), allocatable :: A
-  real :: x, y, delx, dely
+  real :: x,y, valx, valy
+ 
+ write(*,*) nx, ny
   
-  write(*,*) 'Enter the value for the 2 dimensions nz and ny'
-  read*, nx
-  read*, ny
-  
-  
+ !read data
+! write(*,*) 'Enter the value of the 2 arrays'
+! read(*,*) nx, ny
+ 
+ valx = 1./nx
+ valy = 1./ny
+ write(*,*) valx 
+ write(*,*) valy
   ! TODO initialize array A here
- allocate(A(nx,ny)) ! allocation
- 
- delx = 1.0/nx
- dely = 1.0/ny
- 
- y = 0.0
-  
- do j = 1,ny
- 
-   x = 0.0
- 
-     do i=1,nx
-  
-     A(i,j) = x**2 +y**2 
-     x = x + delx   
+!  y = 0.0 
    
-    end do
- 
-    y = y + dely
- end do  
-	
- 
- 
- 
+ first_loop: do j = 1,ny
+               x = 0.0        
+               y = 0.0 
+                inner_loop: do i =1,nx
+                 A(i,j) = x**2 + y**2
+                 x = x + valx     
+                 y = y + valy     
+                end do inner_loop
+ !   y = y + valy
+  end do first_loop
 
   !--------------------------------------------------
   ! Print out the array

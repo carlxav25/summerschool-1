@@ -1,22 +1,22 @@
-program loop
-  implicit none
+program part2
+ implicit none
   
-integer :: num
-  
-  write(*,*) 'Enter the number'
-  read(*,*)  num
-  
-  if (num.le.0) then
-   write(*,*), 'Number is negative' 
-  elseif(num.eq.0) then
-   write(*,*), 'Number is 0'
-  elseif(num.gt.100) then
-    write(*,*), 'Number is > 100'
-  else
-    write(*,*), 'Number is > 0 and <100'
-  end if  
-  
+  integer :: i
+  write(*,*) 'Eneter the value of the integer'
+  read(*,*) i
  
-  
-end program loop
+! control structure
 
+main_if: if (i .lt.0) then
+          Write(*,*) i,'Less than 0'
+         elseif (i.eq.0) then 
+          Write(*,*) i,'Equal to 0'
+         elseif (i.gt.100) then 
+          Write(*,*) i,'Larger than 100'
+         else
+          Write(*,*) i,'Somewhere over the horizon'
+         end if main_if
+
+        
+
+end program
