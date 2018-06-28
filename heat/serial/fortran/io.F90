@@ -55,6 +55,25 @@ contains
 
 
 
+    open(unit=100, file=filename, status='old')
+    read(100,fmt='(2x,i3,x,i3)') nx, ny
+
+
+     allocate(field0%data(nx,ny))
+
+     write(*,*) size(field0%data)    
+     write(*,*) nx,'', ny
+
+    do  i=1,nx
+     
+
+       read(100,*) field0%data(i,:)
+
+     
+   end do
+  
+close(100)
+
     ! The arrays for temperature field contain also a halo region
 
 
