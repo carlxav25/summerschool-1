@@ -8,29 +8,33 @@ contains
 
     real, dimension(:,:), allocatable, intent(out) :: field
     character(len=*), intent(in) :: filename
-
+    integer :: nx, ny,i,j 
+  
     ! TODO: implement function that will:
     ! open the file
     ! read the first header line to get nx and ny
     ! allocate matrix called field
     ! read rest of the file into field
     ! close the file
+     
+    open(unit=100, file=filename, status='old')
+    read(100,fmt='(2x,i3,x,i3)') nx, ny
 
 
+     allocate(field(nx,ny))
 
+     write(*,*) size(field)    
+     write(*,*) nx,'', ny
 
+    do  i=1,nx
+      !do j =1,ny
 
+       read(100,*) field(i,:)
 
-
-
-
-
-
-
-
-
-
-
+     !end do 
+   end do
+  
+close(100)
 
   end subroutine read_field
 
