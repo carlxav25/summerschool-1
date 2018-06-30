@@ -15,9 +15,19 @@ program vectorsum
   end do
 
   ! TODO:
+    
   !   Implement here the parallelized version of vector addition,
   !   vecC = vecA + vecB
-
+  
+  !$omp parallel shared(vecA, vecB) 
+ 
+ 
+    vecC=  vecA+ vecB
+ 
+ 
+ !$omp end parallel 
+   
+ 
   ! Compute the check value
   write(*,*) 'Reduction sum: ', sum(vecC)
 
