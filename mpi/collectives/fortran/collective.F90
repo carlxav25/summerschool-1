@@ -18,7 +18,8 @@ program coll_exer
      end if
      call mpi_abort(MPI_COMM_WORLD, -1, ierr)
   end if
-
+ 
+ 
   ! Initialize message buffers
   call init_buffers
 
@@ -27,10 +28,15 @@ program coll_exer
 
   ! TODO: use a single collective communication call (and maybe prepare
   !       some parameters for the call)
+! Bcast
+!   call mpi_bcast(sendbuf,2*n_mpi_tasks,mpi_integer,0,mpi_comm_world,ierr)
 
+!scatter exer b
+ call mpi_scatter(sendbuf, 2,  mpi_integer, recvbuf, 2, &
+                    mpi_integer,0, mpi_comm_world, ierr)
   ! Print data that was received
   ! TODO: add correct buffer
-  call print_buffers(...)
+  call print_buffers(recvbuf)
 
   call mpi_finalize(ierr)
 
