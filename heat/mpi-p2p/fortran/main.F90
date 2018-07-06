@@ -7,6 +7,7 @@ program heat_solve
   use setup
   use utilities
   use mpi
+  use omp_lib
 
   implicit none
 
@@ -17,6 +18,9 @@ program heat_solve
   integer :: nsteps       ! Number of time steps
   integer, parameter :: image_interval = 500 ! Image output interval
 
+
+  integer :: provided, required=MPI_THREAD_FUNNELED
+
   type(parallel_data) :: parallelization
   integer :: ierr
 
@@ -26,8 +30,11 @@ program heat_solve
 
   ! TODO start: initialize MPI
 
- CALL MPI_INIT(IERR)
-  ! TODO end
+ !CALL MPI_INIT(IERR)
+
+  CALL MPI_INIT_THREAD(required, provided, ierr)  
+
+! TODO end
 
   call initialize(current, previous, nsteps, parallelization)
 
